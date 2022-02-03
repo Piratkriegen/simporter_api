@@ -4,10 +4,12 @@ setuptools>=26
 twine
 wheel>=0.29
 
-# data science
+# data manipulation
 numpy
 pandas
-scikit-learn
+
+# data validation
+pydantic
 
 # tests/linter
 black
@@ -17,10 +19,7 @@ pytest
 yapf
 
 # API
-gcsfs
-google-cloud-storage
-mlflow
-s3fs
+fastapi
 
 # utilities
 six>=1.14

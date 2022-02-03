@@ -1,10 +1,9 @@
 # Data analysis
 - Document here the project: simporter_api
-- Description: Project Description
-- Data Source:
-- Type of analysis:
-
-Please document the project the better you can.
+- Description: API developed as a test to junior data engineer position
+- Data Source: Providaded by the company
+- Type of work: An API to conect a database to a web-service that plots graphs
+  as as time-series.
 
 # Startup the project
 

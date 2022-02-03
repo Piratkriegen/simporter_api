@@ -10,6 +10,9 @@ check_code:
 black:
 	@black scripts/* simporter_api/*.py
 
+run_api:
+	@uvicorn simporter_api.main:app --reload
+
 test:
 	@coverage run -m pytest tests/*.py
 	@coverage report -m --omit="${VIRTUAL_ENV}/lib/python*"
