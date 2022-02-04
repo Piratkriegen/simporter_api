@@ -1,8 +1,8 @@
-from datetime import date
+from datetime import date, datetime
 from enum import Enum
 from typing import Dict, List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 import time
 
@@ -24,12 +24,22 @@ class Filter(str):
     timestamp = "timestamp"
 
 class Event(BaseModel):
-    startDate: date
-    endDate: date
+    startDate: int
+    endDate: int
     Type: Type
     Grouping: Grouping
     attr1: List[Filter]
     attr2: Optional[List[Filter]]
+
+    @validator('startDate', pre=True)
+    def convert_startDate(cls, v):
+        return time.mktime(
+            datetime.strptime(v, "%Y-%m-%d").timetuple())
+
+    @validator('endDate', pre=True)
+    def convert_endDate(cls, v):
+        return time.mktime(
+            datetime.strptime(v, "%Y-%m-%d").timetuple())
 
     class Config:
         orm_mode = True

@@ -17,10 +17,10 @@ def info():
 
 @app.get("/api/{timeline}")
 async def read_timeline(timeline):
-    # start_date = int(
-    #     time.mktime(datetime.strptime(startDate, "%Y-%m-%d").timetuple()))
-    # end_date = int(
-    #     time.mktime(datetime.strptime(startDate, "%Y-%m-%d").timetuple()))
+     start_date = int(
+         time.mktime(datetime.strptime(startDate, "%Y-%m-%d").timetuple()))
+     end_date = int(
+         time.mktime(datetime.strptime(startDate, "%Y-%m-%d").timetuple()))
 
     # data = select_db(startDate, endDate)
     # data = filter_data(data)

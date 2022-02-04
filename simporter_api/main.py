@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas
@@ -20,14 +20,12 @@ def get_db():
         db.close()
 
 
-@app.get("/api/{timeline}", response_model=List[schemas.Response])
-def read_events(timeline: schemas.Event, db: Session = Depends(get_db)):
-    events = crud.get_events(db, timeline)
+@app.get("/api/{timeline}/")
+def read_events(timeline, db: Session = Depends(get_db)):
+    timeline = schemas.Event
+    events = crud.get_events(db, timeline)  # response_model=schemas.Response
     return events
 
-@app.get("/items/")
-async def read_items(q: Optional[str] = None):
-    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
-    if q:
-        results.update({"q": q})
-    return results
+@app.get("/{items}/")
+async def read_items(timeline):
+    return timeline
